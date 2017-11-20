@@ -19,13 +19,13 @@ replacing problematic characters (such as spaces) with a single unproblematic ch
 %setup
 
 %build
-make
+make -C src
 
 %install
 rm -rf %{buildroot}
-%make_install
+%make_install -C src
 install -d %{buildroot}/etc/httpd/conf.d
-install -m 0644 auth_sanitize_remote_user.load %{buildroot}/etc/httpd/conf.d/auth_sanitize_remote_user.load
+install -m 0644 src/auth_sanitize_remote_user.load %{buildroot}/etc/httpd/conf.d/auth_sanitize_remote_user.load
 
 %clean
 rm -rf %{buildroot}
@@ -36,7 +36,9 @@ rm -rf %{buildroot}
 /etc/httpd/conf.d/auth_sanitize_remote_user.load
 
 %changelog
-* Thu Sep 08 2016 Robert W Frank <robert.frank@manchester.ac.uk>
+* Mon Nov 20 2017 Robert Frank <robert.frank@manchester.ac.uk>
+- fix make calls and source paths
+* Thu Sep 08 2016 Robert Frank <robert.frank@manchester.ac.uk>
 - fixed bug that caused a segfault when enabled in a http virtual host
-* Thu Jun 23 2016 Robert W Frank <robert.frank@manchester.ac.uk>
+* Thu Jun 23 2016 Robert Frank <robert.frank@manchester.ac.uk>
 - first version

@@ -1,0 +1,1 @@
+LoadModule auth_sanitize_remote_user_module modules/mod_auth_sanitize_remote_user.so

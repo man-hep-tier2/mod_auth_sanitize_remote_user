@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Files / Directories produced by Apache Makefiles
+*.slo
+src/.libs
